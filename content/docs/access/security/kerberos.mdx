@@ -1,13 +1,13 @@
 ---
 title: Kerberos
 ---
-[Kerberos](https://en.wikipedia.org/wiki/Kerberos_(protocol)) is a single sign-on system. Installing Kerberos on your PC means you don't have to fill in your password with every login attempt. You login only once, the Kerberos server issue a ticket which is stored in your computer. During the validity of the ticket you can log in to every frontend, compute node or storage without entering a password. 
+[Kerberos](https://en.wikipedia.org/wiki/Kerberos_(protocol)) is a single sign-on system. Installing Kerberos on your PC means you don't have to fill in your password with every login attempt. You login only once, the Kerberos server issues a ticket which is stored in your computer. During the validity of the ticket, you can log in to every frontend, compute node or storage without entering a password. 
 
 ## Linux
 
 ### Install Kerberos
 
-On Ubuntu or other Debian-like system, you can install Kerberos using apt command.
+On Ubuntu or another Debian-like system, you can install Kerberos using the apt command.
 
 ```
 # update repositories and upgrade your system (recommended)
@@ -19,7 +19,7 @@ sudo apt update && sudo apt upgrade
 sudo apt install krb5-user ssh-krb5
 ```
 
-You can skip the configuration graphical wizard (click on Ok, Next, ...), the  environment can be set up later.
+You can skip the configuration graphical wizard (click on Ok, Next, ...), the environment can be set up later.
 
 On Mac, Kerberos is available as part of the MacOS.
 
@@ -48,7 +48,7 @@ GSSAPIDelegateCredentials yes
 GSSAPIKeyExchange yes         # MacOS users: leave out this line!
 ```
 
-You can also make the change of SSH client configuration in a file `/etc/ssh/ssh_config`, it affects settings of all users on your system.
+You can also make the change of SSH client configuration in a file `/etc/ssh/ssh_config`, it affects the settings of all users on your system.
 
 ### Usage
 
@@ -56,7 +56,7 @@ Run these commands:
 
 ```
 # obtain ticket from Kerberos server
-# You will be asked to fill in password
+# You will be asked to fill in the password
 kinit user123@META 
 
 # check valid tickets
@@ -73,12 +73,12 @@ Valid starting     Expires            Service principal
 05/26/21 17:48:19  05/27/21 17:48:17  krbtgt/META@META
 ```
 
-It means that you have valid ticket for 24 hours to META (Metacentrum).
+It means that you have a valid ticket for 24 hours to META (Metacentrum).
 
 You can get a ticket with renew ability (maximum time in Metacentrum is 7 days):
 
 ```
-# You will be asked to fill in password
+# You will be asked to fill in the password
 kinit -r 7d META_USERNAME@META
 ```
 
@@ -88,13 +88,13 @@ Now, You can log in to any node by command e.g.:
 
 
 <Callout  type="info" title="Tip" icon="💡">
-    If you cannot login try running command `ntpdate tik.cesnet.cz` to synchronize clock.
+    If you cannot login try running the command `ntpdate tik.cesnet.cz` to synchronize the clock.
 </Callout>
 
 ## Windows
 
 <Callout  type="info" title="Tip" icon="💡">
-    If you have Windows subsystem for Linux (WSL) installed, you can follow instructions for Linux.
+    If you have Windows subsystem for Linux (WSL) installed, you can follow the instructions for Linux.
 </Callout>
 
 <Callout  type="warn" title="Warning">
@@ -109,7 +109,7 @@ Download the latest Kerberos release from the [MIT Kerberos distribution page](h
 
 **Enable hidden items**
 
-You have to enable hidden items in order to see the ProgramData folder needed in the next step. 
+You have to enable hidden items to see the ProgramData folder needed in the next step. 
 
 ![pic](/img/meta/access/win-kerb-1.png)
 
@@ -137,6 +137,6 @@ Download/copy the `/etc/krb5.conf` from any frontend and save it to `C:\ProgramD
 
 and click OK
 
-You should see a valid Kerberos ticket now and if you did everything right, you should not need to type in your password during login phase (e.g. when using PuTTY):
+You should see a valid Kerberos ticket now and if you did everything right, you should not need to type in your password during the login phase (e.g. when using PuTTY):
 
 ![pic](/img/meta/access/win-kerb-5.png)
